@@ -1,0 +1,8 @@
+<!-- <p>side-menu works!</p> -->
+<ul class="smenu">
+  <li *ngFor="let data of datas; index as i">
+    <a [routerLink]="data['link']">
+      <span class="dbt"> {{ data["title"] }}</span>
+    </a>
+  </li>
+</ul>

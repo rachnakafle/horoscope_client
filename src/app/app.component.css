@@ -1,0 +1,22 @@
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index:-1;
+  top: 0;
+  left: 0;
+  background-image: url(../assets/navbar-img-4.jpg);
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.sideBrand {
+  padding: 20px;
+}
+
+.topbar{
+  margin-left: 250px;
+  background-image: url(../assets/topbar.jpg);
+  height: 80px;
+  width: 85vw;
+}
