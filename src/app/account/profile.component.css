@@ -1,0 +1,33 @@
+.item-profile-pic-info{
+    padding: 10px 0 20px;
+}
+.item-profile-pic-info h5{
+    font-size: 25px;
+    font-weight: normal;
+    margin: 0;
+}
+.item-profile-pic-info p{
+    margin: 0;
+    color: #434246;
+}
+.item-profile-pic-image{
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #eee;
+    margin: 0 auto;
+}
+
+.wh-item-heading{
+    position: relative;
+}
+.wh-item-heading .btn{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -18px;
+}
+.wh-item-heading span.material-icons-outlined{
+    font-size: 14px;
+}

@@ -1,0 +1,79 @@
+<div [ngClass]="router.url === '/' ? 'page-cpanel' : 'no-cpanel'">
+  <div
+    #Sidenav
+    id="mySidenav"
+    class="sidenav"
+    [ngClass]="openNav ? 'open' : ' '"
+  >
+    <div class="sideBrand text-center">
+      <a [routerLink]="'/'">
+        <img src="assets/mypay-logo-white.png"  class="img-fluid" width="140"/>
+      </a>
+    </div>
+    <sidemenu></sidemenu>
+  </div>
+  <!--#mySidenav ends-->
+
+  <div
+    id="main"
+    class="openNav"
+    [ngClass]=" openNav ? 'main-opennav' : ' '"
+  >
+    <nav-menu [cUser] = "currentUser" [openNav]="openNav" (openSideNavFromChild)="toggleSideNav()">
+    </nav-menu>
+    <div *ngIf="!(router.url === '/')" class="breadcrumbs">
+      
+      <bj-breadcrumbs></bj-breadcrumbs>
+    </div>
+
+    <div *ngIf="router.url === '/'" class="cpanel container-fluid">
+      
+      <div class="row">
+        <div class="col-3">
+          <stat-item itemTitle="Total Users" itemCount="20" itemColor="orange" itemIcon="people"></stat-item>
+        </div>
+        <div class="col-3">
+          <stat-item itemTitle="Visits Today" itemCount="202" itemColor="green" itemIcon="tour"></stat-item>
+        </div>
+        <div class="col-3">
+          <stat-item itemTitle="Active Users" itemCount="2" itemColor="blue" itemIcon="person"></stat-item>
+        </div>
+        <div class="col-3">
+          <stat-item itemTitle="New Orders" itemCount="211" itemColor="red" itemIcon="thumb_up_alt"></stat-item>
+        </div>
+      </div>
+      <!--.row ends-->
+      
+      <div class="row">
+        <div class="col-6">
+          <dash-item itemTitle="Conversion" chartType="bar"></dash-item>
+        </div>
+        <!--.col ends-->
+        <div class="col-6">
+          <dash-item itemTitle="Sales Overview" ChartType="line"></dash-item>
+        </div>
+        <!--.col ends-->
+      </div>
+      <!--.row ends-->
+
+      <div class="row">
+        <div class="col-6">
+          <dash-item itemTitle="Revenue" chartType="bar"></dash-item>
+        </div>
+        <!--.col ends-->
+        <div class="col-6">
+          <dash-item itemTitle="Statistics" ChartType="line"></dash-item>
+        </div>
+        <!--.col ends-->
+      </div>
+      <!--.row ends-->
+
+
+    </div>
+    <!--.Cpanel Ends-->
+    <div [ngClass]="router.url === '/login' ? '' : 'content'">
+      <router-outlet> </router-outlet>
+    </div>
+  </div>
+  <!--#main ends-->
+</div>

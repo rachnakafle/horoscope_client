@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="navbar_left">
+    <a id="menu_icon" class="navbar-brand menu_icon">
+      <span class="material-icons md-36" (click)="openFromChild()">
+        {{ openNav ? "clear" : "sort" }}
+      </span>
+    </a>
+
+    <div class="nav_search_bar">
+      <span class="material-icons"> search </span>
+      <input type="search" placeholder="Search keywords..." />
+    </div>
+  </div>
+  <div class="navbar_right">
+    <div class="icon_links" id="icon_links">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item admin_notification">
+          <a
+            class="nav-link active"
+            id="ddMenuNotification"
+            href="#"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <span class="badge badge-danger navbar-badge">3</span>
+            <span class="material-icons"> notifications_none </span>
+          </a>
+          <div
+            class="dropdown-menu navdp dropdown-menu-right"
+            aria-labelledby="ddMenuNotification"
+          >
+            <div class="dropdown-title">Notifications</div>
+            <div class="dropdown-item">
+              <a href="#">This is a test notification</a>
+            </div>
+            <div class="dropdown-item">
+              <a href="#">This is another test notification</a>
+            </div>
+            <div class="dropdown-item">
+              <a href="#">Yet another test notification</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item admin_userprofile dropdown">
+          <a
+            class="nav-link"
+            id="profileMenuButton"
+            href="#"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              *ngIf="!!cUser.profileImagePath"
+              src="{{ baseUrl + cUser.profileImagePath }}"
+            />
+            <img *ngIf="!cUser.profileImagePath" src="assets/img_profile.png" />
+          </a>
+          <div
+            class="dropdown-menu navdp dropdown-menu-right"
+            aria-labelledby="profileMenuButton"
+          >
+            <div class="dropdown-menu-head">
+              <img
+                *ngIf="!!cUser.profileImagePath"
+                src="{{ baseUrl + cUser.profileImagePath }}"
+              />
+              <img
+                *ngIf="!cUser.profileImagePath"
+                src="assets/img_profile.png"
+              />
+              <span>John Doe</span>
+            </div>
+            <ul class="dropdown-menu-body">
+              <li>
+                <a class="dropdown-item" routerLink="account">
+                  <span class="material-icons-outlined">
+                    person_outline
+                    </span>
+                    My Profile
+                  </a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="account/change-password"
+                  >
+                  <span class="material-icons-outlined">
+                    lock
+                    </span> 
+                    Change Password
+                    </a>
+              </li>
+              <li><a class="dropdown-item" (click)="signout()">
+                <span class="material-icons-outlined">
+                  logout
+                  </span>
+                   Sign Out
+                  </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

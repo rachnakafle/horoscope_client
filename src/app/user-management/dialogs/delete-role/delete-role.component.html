@@ -1,0 +1,20 @@
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteRoleModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+           
+            <div class="modal-body  text-center mt-3">
+                <img src="assets/cpanel-icons/trash.png" class="img-fluid" width="40px">
+                <h3 class="mt-2 mb-2 text-danger">Are you Sure ? </h3>
+                  <h6 class="mt-2 mb-4"> You want to delete this zodiac sign.</h6>
+              </div>
+            <div class="modal-footers text-center mb-4">
+                <button type="button" class="btn btn-warning btn-sm mr-3" data-dismiss="modal">Cancel</button>
+                <button (click)="confirmDelete()" type="button" class="btn btn-danger btn-sm"
+                    data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Delete END -->

@@ -1,0 +1,168 @@
+<div class="horroscope-dashboard">
+  <div class="page-item">
+    <div class="page-entry-heading">
+      <h3>Horoscope / राशिफल</h3>
+    </div>
+
+    <!--.page-entry-heading ends-->
+
+    <div class="page-item-entry text-center">
+      <nav class="nav-tabs">
+        <ul class="nav nav-tabs">
+          <li
+            *ngFor="let item of navTabs"
+            [routerLinkActive]="['show']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link" [routerLink]="item.path">
+              {{ item.text }}
+            </a>
+          </li>
+        </ul>
+
+        <!-- Settings Button -->
+        <div class="card-header">
+          <button
+            class="btn btn-outline-primary btn-sm"
+            data-toggle="modal"
+            data-target="#settings"
+          >
+            Settings
+          </button>
+        </div>
+
+        <!-- Settings Modal -->
+        <div
+          class="modal fade"
+          id="settings"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="settingsModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-c-red" id="settingsModalLabel">
+                  Set Your Horoscope
+                </h5>
+              </div>
+              <div class="modal-body">
+                <form >
+                  <div class="form-group row">
+                    <label class="col-md-5">Select Horoscope</label>
+                    <select
+                      class="form-control col-md-7"
+                      id="FormControlSelect"
+                      (ngModelChange)="onSelectHoroscope($event)"
+                      [(ngModel)]="myHoroscope"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option selected>Select Your Horoscope</option>
+                      <option
+                        value="{{ day.horoscopeId }}"
+                        *ngFor="let day of alldaily"
+                      >
+                        {{ day.horoscopeNameNepali }} -
+                        {{ day.horoscopeNameEnglish }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-5">Select language</label>
+                    <select
+                      class="form-control col-md-7"
+                      id="FormControlSelect"
+                      (ngModelChange)="onSelectLanguage($event)"
+                      [(ngModel)]="myLanguage"
+                      [ngModelOptions]="{ standalone: true }"
+                    >
+                      <option value="" selected>Select One Language</option>
+                      <option value="en">English</option>
+                      <option value="np">Nepali</option>
+                    </select>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <div class="text-right mt-3">
+                  <button
+                    type="reset"
+                    data-dismiss="modal"
+                    class="btn btn-danger md-close btn-sm"
+                  >
+                    Close
+                  </button>
+
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main
+        *ngIf="_router.url === '/horoscope'"
+        class="content-main-entry horoscope-content"
+      >
+        <div *ngIf="loader" class="loader">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <!--.loader ends -->
+
+        <h5 class="current_date">
+          Today's Horoscope - {{ selected_date | date: "fullDate" }}
+        </h5>
+        <!-- API TABLE -->
+        <div *ngIf="myHoroscope === null" class="row">
+          <div *ngFor="let day of alldaily" class="col-md-3">
+            <div class="card p-2">
+              <div class="text-center m-b-30 m-t-30">
+                <img
+                  src="{{ baseUrl + day.horoscopeImagePath }}"
+                  style="width: 80px"
+                  class="rounded-circles"
+                />
+                <h4 class="mt-2 text-c-red">
+                  {{ day.horoscopeNameNepali }} - {{ day.horoscopeNameEnglish }}
+                </h4>
+                <span *ngIf="myLanguage === 'np'" class="text-muted">
+                  {{ day.subTitleNepali }}
+                </span>
+                <span *ngIf="myLanguage === 'en'" class="text-muted">
+                  {{ day.subTitleEnglish }}
+                </span>
+                <div
+                  *ngIf="myLanguage === 'en'"
+                  class="desc"
+                  [innerHTML]="day.horoscopeDescriptionEnglish"
+                ></div>
+                <div
+                  *ngIf="myLanguage === 'np'"
+                  class="desc"
+                  [innerHTML]="day.horoscopeDescriptionNepali"
+                ></div>
+              </div>
+            </div>
+            <!--.card ends-->
+          </div>
+          <!---.col ends-->
+        </div>
+        <!--.row ends-->
+      </main>
+      <!--.content-main-entry ends-->
+
+      <router-outlet></router-outlet>
+    </div>
+    <!--.page-entry-heading ends-->
+  </div>
+  <!--.page-item END-->
+</div>

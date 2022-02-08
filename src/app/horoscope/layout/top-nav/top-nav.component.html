@@ -1,0 +1,35 @@
+<nav class="horoscope-nav">
+    <ul>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="'/horoscope'">Horoscope Dashboard</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="'/horoscope/update-daily'">Daily Horoscope</a>
+        </li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="'/horoscope/update-weekly'">Weekly Horoscope</a>
+        </li>
+        <li class="has-dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="'/horoscope/update-monthly'">Monthly Horoscope</a>
+            <ul>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                    <a [routerLink]="'/horoscope/update-monthly'">English</a>
+                </li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                    <a [routerLink]="'/horoscope/update-monthly/np'">Nepali</a>
+                </li>
+            </ul>
+        </li>
+        <li class="has-dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a [routerLink]="'/horoscope/update-yearly'">Yearly Horoscope</a>
+            <ul>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                    <a [routerLink]="'/horoscope/update-yearly'">English</a>
+                </li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+                    <a [routerLink]="'/horoscope/update-yearly/np'">Nepali</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>

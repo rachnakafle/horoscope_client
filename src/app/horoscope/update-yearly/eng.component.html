@@ -1,0 +1,54 @@
+<main class="content-main-entry horoscope-content"
+      >
+        <div *ngIf="loader" class="loader">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <!--.loader ends -->
+
+        <h5 class="current_date">
+          Today's Horoscope - {{ selected_date | date: "fullDate" }}
+        </h5>
+        <!-- API TABLE -->
+        <div *ngIf="myHoroscope === null" class="row">
+          <div *ngFor="let day of allYearly" class="col-md-3">
+            <div class="card p-2">
+              <div class="text-center m-b-30 m-t-30">
+                <img
+                  src="{{ baseUrl + day.horoscopeImagePath }}"
+                  style="width: 80px"
+                  class="rounded-circles"
+                />
+                <h4 class="mt-2 text-c-red">
+                  {{ day.horoscopeNameNepali }} - {{ day.horoscopeNameEnglish }}
+                </h4>
+                <span *ngIf="myLanguage === 'np'"  class="text-muted"
+                  >
+                  {{ day.subTitleNepali }}
+                  </span>
+                  <span *ngIf="myLanguage === 'en'"  class="text-muted"
+                  >
+                  {{ day.subTitleEnglish }}
+                  </span>
+                <div
+                  *ngIf="myLanguage === 'en'"
+                  class="desc"
+                  [innerHTML]="day.horoscopeDescriptionEnglish"
+                ></div>
+                <div
+                  *ngIf="myLanguage === 'np'"
+                  class="desc"
+                  [innerHTML]="day.horoscopeDescriptionNepali"
+                ></div>
+              </div>
+            </div>
+            <!--.card ends-->
+          </div>
+          <!---.col ends-->
+        </div>
+        <!--.row ends-->
+      </main>
+      <!--.content-main-entry ends-->

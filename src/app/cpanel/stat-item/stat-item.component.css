@@ -1,0 +1,39 @@
+.stat-item{
+    padding: 20px;
+    display: flex;
+    margin: 20px 0;
+    border-radius: 3px;
+    color: #fff;
+}
+.stat-item.orange{
+    background: rgba(227, 101, 9, 0.65);
+    background: linear-gradient(-135deg, #899FD4 0%, #A389D4 100%);
+}
+.stat-item.green{
+    background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+}
+.stat-item.blue{
+    background: #1aa9f3;
+}
+.stat-item.red{
+    background: #f44236;
+}
+.item-entry{
+    width: 60%;
+}
+.item-icon{
+    width: 40%;
+}
+
+.item-title{
+    font-size: 18px;
+}
+.item-count{
+    font-size: 25px;
+}
+.item-icon span{
+    font-size: 70px;
+    opacity: 0.5;
+    text-align: center;
+    line-height: 70px;
+}

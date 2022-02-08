@@ -1,0 +1,93 @@
+<div class="login-wrap">
+  <div class="login-left w-50">
+    <img src="assets/login-hero.png" />
+  </div>
+  <div class="login-right w-50">
+    <div class="login-page page">
+      <div class="page-header text-center">
+        <div class="welcome-msg">
+          <h5>Welcome to,</h5>
+        </div>
+        <!--."welcome-msg ends-->
+        <div class="login-brand">
+          <img src="assets/mypay-logo.png" />
+        </div>
+        <!--.login-brand ends-->
+        <div class="login-intro">
+          <p>
+            {{appMessages.loginIntro}}
+          </p>
+        </div>
+        <!--.login-intro ends-->
+      </div>
+      <!--.page-header ends-->
+      <div *ngIf="submitted" class="alert alert-danger">
+        {{submitted_msg}}
+      </div>
+      <div class="page-entry">
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input
+              name="username"
+              type="text"
+              class="form-control"
+              id="inputUsername"
+              placeholder="Enter your username"
+              formControlName="username"
+            />
+            <small
+              class="err_msg"
+              *ngIf="username && username.invalid && username.touched"
+            >
+              Please enter valid username.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              placeholder="Min. 8 characters"
+              formControlName="password"
+            />
+            <small
+              class="err_msg"
+              *ngIf="password && password.invalid && password.touched"
+            >
+              Please enter valid password.
+            </small>
+          </div>
+          <div class="row">
+            <div class="remember-forgot-wrap form-group col-md-5">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label class="form-check-label text-dark" for="exampleCheck1"
+                  >Remember Me</label
+                >
+              </div>
+             
+            </div>
+          
+          </div>
+         
+          <button
+            [disabled]="loginForm.invalid"
+            type="submit"
+            class="btn btn-primary btn-lg btn-block theme-bg rounded-30 mt-2"
+          >
+            Log In
+          </button>
+        </form>
+      </div>
+      <!--.page-entry ends-->
+    </div>
+    <!--.Login Page ends-->
+  </div>
+</div>
