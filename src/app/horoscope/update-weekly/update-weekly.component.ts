@@ -38,16 +38,16 @@ export class UpdateWeeklyComponent implements OnInit {
     }
     this._horoscope.getHoroscope(data).subscribe({
       next:(x:any) => {
-        console.log(x);
+        // console.log(x);
         this.allWeekly = x.weeklyHoroscopes;
         this.selected_date = x.currentDate;
         this.myHoroscope = x.myHoroscope;
         this.myLanguage = x.selectedLanguageCode;
         this.loader = false;
-        console.log(this.allWeekly);
+        // console.log(this.allWeekly);
       },
       error:(e:any) => {
-        console.log(e);
+        // console.log(e);
         this.loader = false;
       },
       complete:() => { },
