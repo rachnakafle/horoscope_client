@@ -53,8 +53,6 @@ export class UpdateDailyComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDaily('Daily');
-    // console.log(this.myLanguage);
-    // console.log(this.myHoroscope);
   }
 
   //To get User's Selected Horoscope
@@ -77,6 +75,8 @@ export class UpdateDailyComponent implements OnInit {
       username: this.currentUser,
       frequency: freq,
     };
+    console.log(data);
+
     this._horoscope.getHoroscope(data).subscribe({
       next: (x: any) => {
         console.log(x);
@@ -95,22 +95,22 @@ export class UpdateDailyComponent implements OnInit {
     });
   }
 
-  // onSubmit() {
-  //   let data = {
-  //     username: this.currentUser,
-  //     languageCode: this.languageCode,
-  //     horoscopeId: this.horoscopeId,
-  //   };
-
-  //   this._horoscope.updateHoroscope(data).subscribe({
-  //     next: (x: any) => {
-  //       this.language = x.languageCode;
-  //       this.horoscope = x.horoscopeId;
-  //     },
-  //     error: (e: any) => {
-  //        console.log('Error:' + e);
-  //     },
-  //     complete: () => {},
-  //   });
-  // }
+  onSubmit() {
+    let submitdata = {
+      username: this.currentUser,
+      languageCode: this.languageCode,
+      horoscopeId: this.horoscopeId,
+    };
+    console.log(submitdata);
+    this._horoscope.updateHoroscope(submitdata).subscribe({
+      next: (x: any) => {
+        this.language = x.languageCode;
+        this.horoscope = x.horoscopeId;
+      },
+      error: (e: any) => {
+        console.log('Error:' + e);
+      },
+      complete: () => {},
+    });
+  }
 }

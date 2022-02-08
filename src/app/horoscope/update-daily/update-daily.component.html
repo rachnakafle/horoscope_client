@@ -48,7 +48,7 @@
                 </h5>
               </div>
               <div class="modal-body">
-                <form >
+                <form [formGroup]="editHorosForm" (ngSubmit)="onSubmit()">
                   <div class="form-group row">
                     <label class="col-md-5">Select Horoscope</label>
                     <select
@@ -78,7 +78,7 @@
                       [(ngModel)]="myLanguage"
                       [ngModelOptions]="{ standalone: true }"
                     >
-                      <option value="" selected>Select One Language</option>
+                      <option  selected>Select One Language</option>
                       <option value="en">English</option>
                       <option value="np">Nepali</option>
                     </select>

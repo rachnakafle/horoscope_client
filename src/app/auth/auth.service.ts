@@ -30,7 +30,7 @@ export class AuthService {
   }
   login(model: any): Observable<IUser | undefined> {
     
-    return this.http.post(this.baseUrl + '/api/Authenticate/login', model).pipe(
+    return this.http.post(this.baseUrl + '/api/Authenticate/user-login', model).pipe(
       map((response: any) => {
         const user = response;
         console.log(user);
