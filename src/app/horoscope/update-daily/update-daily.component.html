@@ -7,104 +7,105 @@
     <!--.page-entry-heading ends-->
 
     <div class="page-item-entry text-center">
-      <nav class="nav-tabs">
-        <ul class="nav nav-tabs">
-          <li
-            *ngFor="let item of navTabs"
-            [routerLinkActive]="['show']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link" [routerLink]="item.path">
-              {{ item.text }}
-            </a>
-          </li>
-        </ul>
+      <div class="nav-headline">
+        <!-- NavBar -->
+        <nav class="nav-tabs">
+          <ul class="nav nav-tabs">
+            <li
+              *ngFor="let item of navTabs"
+              [routerLinkActive]="['show']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a class="nav-link" [routerLink]="item.path">
+                {{ item.text }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- NavBar End -->
 
-        <!-- Settings Button -->
-        <div class="card-header">
-          <button
-            class="btn btn-outline-primary btn-sm"
-            data-toggle="modal"
-            data-target="#settings"
+        <!-- Settings Box -->
+        <div class="settings">
+          <!-- Settings Button -->         
+            <button
+              class="btn btn-outline-primary btn-sm"
+              data-toggle="modal"
+              data-target="#settings"
+            >
+              Settings
+            </button>
+          <!-- Settings Modal -->
+          <div
+            class="modal fade"
+            id="settings"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="settingsModalLabel"
+            aria-hidden="true"
           >
-            Settings
-          </button>
-        </div>
-
-        <!-- Settings Modal -->
-        <div
-          class="modal fade"
-          id="settings"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="settingsModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title text-c-red" id="settingsModalLabel">
-                  Set Your Horoscope
-                </h5>
-              </div>
-              <div class="modal-body">
-                <form [formGroup]="editHorosForm" (ngSubmit)="onSubmit()">
-                  <div class="form-group row">
-                    <label class="col-md-5">Select Horoscope</label>
-                    <select
-                      class="form-control col-md-7"
-                      id="FormControlSelect"
-                      (ngModelChange)="onSelectHoroscope($event)"
-                      [(ngModel)]="myHoroscope"
-                      [ngModelOptions]="{ standalone: true }"
-                    >
-                      <option selected>Select Your Horoscope</option>
-                      <option
-                        value="{{ day.horoscopeId }}"
-                        *ngFor="let day of alldaily"
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-c-red" id="settingsModalLabel">
+                    Set Your Horoscope
+                  </h5>
+                </div>
+                <div class="modal-body">
+                  <!-- Settings Form -->
+                  <form [formGroup]="editHorosForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group row">
+                      <label class="col-md-5">Select Horoscope</label>
+                      <select
+                        class="form-control col-md-7"
+                        id="selectHoroscope"
+                        formControlName="selectedHoroscope"
                       >
-                        {{ day.horoscopeNameNepali }} -
-                        {{ day.horoscopeNameEnglish }}
-                      </option>
-                    </select>
-                  </div>
+                        <option value="0">Not Selected</option>
 
-                  <div class="form-group row">
-                    <label class="col-md-5">Select language</label>
-                    <select
-                      class="form-control col-md-7"
-                      id="FormControlSelect"
-                      (ngModelChange)="onSelectLanguage($event)"
-                      [(ngModel)]="myLanguage"
-                      [ngModelOptions]="{ standalone: true }"
-                    >
-                      <option  selected>Select One Language</option>
-                      <option value="en">English</option>
-                      <option value="np">Nepali</option>
-                    </select>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <div class="text-right mt-3">
-                  <button
-                    type="reset"
-                    data-dismiss="modal"
-                    class="btn btn-danger md-close btn-sm"
-                  >
-                    Close
-                  </button>
+                        <option
+                          *ngFor="let horos of allHoros"
+                          value="{{ horos.displayNumber }}"
+                        >
+                          {{ horos.horoscopeNameNepali }} -
+                          {{ horos.horoscopeNameEnglish }}
+                        </option>
+                      </select>
+                    </div>
 
-                  <button type="submit" class="btn btn-primary btn-sm">
-                    Submit
-                  </button>
+                    <div class="form-group row">
+                      <label class="col-md-5">Select language</label>
+                      <select
+                        class="form-control col-md-7"
+                        formControlName="languageCode"
+                      >
+                        <option selected>Select One Language</option>
+                        <option value="en">English</option>
+                        <option value="np">Nepali</option>
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="text-right mt-3">
+                        <button
+                          type="reset"
+                          data-dismiss="modal"
+                          class="btn btn-danger md-close btn-sm"
+                        >
+                          Close
+                        </button>
+
+                        <button type="submit" class="btn btn-primary btn-sm">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
+          <!-- Settings Modal End-->
         </div>
-      </nav>
-
+      </div>
       <main
         *ngIf="_router.url === '/horoscope'"
         class="content-main-entry horoscope-content"

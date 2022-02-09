@@ -3,6 +3,7 @@ import { HoroscopeService } from '../services/horoscope.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import 'jquery';
 
 @Component({
   selector: 'app-update-daily',
@@ -18,12 +19,13 @@ export class UpdateDailyComponent implements OnInit {
   myLanguage!: string;
   myHoroscope!: string;
   languageCode: any;
-  horoscopeId!: number;
-  language: any;
-  horoscope: any;
+
+  allHoros: any; //displays every horoscope in select
+  selectedUser: any;
+  alldata: any;
 
   editHorosForm = new FormGroup({
-    horoscopeId: new FormControl(''),
+    selectedHoroscope: new FormControl(''),
     languageCode: new FormControl(''),
   });
 
@@ -46,6 +48,9 @@ export class UpdateDailyComponent implements OnInit {
     },
   ];
 
+  userName: any;
+  horoscopeId: any;
+
   constructor(private _horoscope: HoroscopeService, public _router: Router) {
     let token = this._horoscope.getToken();
     this.currentUser = this._horoscope.getUserByToken(token);
@@ -53,66 +58,73 @@ export class UpdateDailyComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDaily('Daily');
-    this.onSubmit();
+    this.getAllHoros();
   }
 
-  //To get User's Selected Horoscope
-  onSelectHoroscope(e: any) {
-    this.myHoroscope = e.target.value;
-    console.log(this.myHoroscope);
-    this.getDaily(this.myHoroscope);
-  }
-
-  // To get User's selected language
-  onSelectLanguage(e: any): void {
-    this.myLanguage = e.target.value;
-    console.log(this.myLanguage);
-    this.getDaily(this.myLanguage);
-  }
-
+  // For UpdateDaily
   getDaily(freq: string) {
     this.loader = true;
     let data = {
       username: this.currentUser,
       frequency: freq,
     };
-    // console.log(data);
-
+    console.log(data);
     this._horoscope.getHoroscope(data).subscribe({
       next: (x: any) => {
-        // console.log(x);
         this.alldaily = x.dailyHoroscopes;
         this.selected_date = x.currentDate;
         this.myHoroscope = x.myHoroscope;
         this.myLanguage = x.selectedLanguageCode;
-        this.loader = false;
-        // console.log(this.alldaily);
+        this.horoscopeId = x.selectedHoroscopeId;
+        this.loader = false;       
+        console.log( this.horoscopeId);
+
+        // To bind with form settings
+        this.editHorosForm.setValue({
+          selectedHoroscope: this.horoscopeId,
+          languageCode: this.myLanguage,
+        });
+        console.log(this.editHorosForm.value);
       },
-      error: (e: any) => {
-        // console.log(e);
-        this.loader = false;
-      },
+      error: (e: any) => {},
       complete: () => {},
     });
   }
 
-  onSubmit() {
-    let submitdata = {
-      username: this.currentUser,
-      languageCode: this.languageCode,
-      horoscopeId: this.horoscopeId,
-    };
-    console.log(submitdata);
-
-    this._horoscope.updateHoroscope(submitdata).subscribe({
+  // To get User's HoroscopeList
+  getAllHoros() {
+    let temp: any;
+    this._horoscope.getAllHorosList().subscribe({
       next: (x: any) => {
-        this.language = x.languageCode;
-        this.horoscope = x.horoscopeId;
+        temp = x;
+      },
+      error(e: any) {
+        console.log('Error:' + e);
+      },
+      complete: () => {
+        this.allHoros = temp;
+       },
+    });
+  }
+
+  onSubmit() {
+    let data = {
+      userName: this.currentUser,
+      horoscopeId: this.editHorosForm.value.selectedHoroscope,
+      languageCode: this.editHorosForm.value.languageCode,
+    };
+    console.log(data);
+    this._horoscope.updateHoroscope(data).subscribe({
+      next: (x: any) => {
+        console.log(x);
       },
       error: (e: any) => {
         console.log('Error:' + e);
       },
-      complete: () => {},
+      complete: () => {
+        console.log(data);
+        (<any>$('.modal')).modal('hide');
+      },
     });
   }
 }

@@ -37,6 +37,19 @@ export class HoroscopeService {
     );
   }
 
+
+
+  // To get all horoscope list 
+  getAllHorosList(){
+    return this.http.get(baseUrl + '/api/ClientHoroscopeDetails/get-client-horoscope_list', this.options);
+  }
+
+  // To get horoscope by Id
+  getHorosById(id:any): Observable<any>{
+    return this.http.get(baseUrl + '/api/ClientHoroscopeDetails/get-client-horoscope-by-id?Id='+id, this.options)
+  }
+
+  //To Post/Update data that comes from settings
   updateHoroscope(data: any): Observable<any> {
     return this.http.put(
       baseUrl + '/api/ClientHoroscopeDetails/set-user-horoscope-language',
