@@ -19,11 +19,10 @@ export class UpdateDailyComponent implements OnInit {
   myLanguage!: string;
   myHoroscope!: string;
   languageCode: any;
-
-  allHoros: any; //displays every horoscope in select
-  selectedUser: any;
-  alldata: any;
-
+  allHoros: any; //displays every horoscope in select  
+  userName: any;
+  horoscopeId: any;
+  
   editHorosForm = new FormGroup({
     selectedHoroscope: new FormControl(''),
     languageCode: new FormControl(''),
@@ -47,9 +46,6 @@ export class UpdateDailyComponent implements OnInit {
       path: '/horoscope/update-yearly',
     },
   ];
-
-  userName: any;
-  horoscopeId: any;
 
   constructor(private _horoscope: HoroscopeService, public _router: Router) {
     let token = this._horoscope.getToken();
@@ -76,10 +72,10 @@ export class UpdateDailyComponent implements OnInit {
         this.myHoroscope = x.myHoroscope;
         this.myLanguage = x.selectedLanguageCode;
         this.horoscopeId = x.selectedHoroscopeId;
-        this.loader = false;       
-        console.log( this.horoscopeId);
+        this.loader = false;
+        console.log(this.horoscopeId);
 
-        // To bind with form settings
+        // To bind with settings's form
         this.editHorosForm.setValue({
           selectedHoroscope: this.horoscopeId,
           languageCode: this.myLanguage,
@@ -103,7 +99,7 @@ export class UpdateDailyComponent implements OnInit {
       },
       complete: () => {
         this.allHoros = temp;
-       },
+      },
     });
   }
 

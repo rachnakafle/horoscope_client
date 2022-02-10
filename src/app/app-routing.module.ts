@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-
 import { AuthGuard } from './auth/auth.guard';
 
 import { HoroscopeRoutingModule } from './horoscope/horoscope-routing.module';
@@ -13,7 +11,7 @@ import { CpanelComponent } from './cpanel/cpanel.component';
 import { ProfileComponent } from './account/profile.component';
 import { AllUsersComponent } from './user-management/all-users/all-users.component';
 import { UpdateDailyComponent } from './horoscope/update-daily/update-daily.component';
-
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -21,49 +19,52 @@ const routes: Routes = [
     path: 'login',
   },
   {
+    component: RegisterComponent,
+    path: 'register',
+  },
+  {
     component: CpanelComponent,
     path: '',
     data: {
-      breadcrumb: 'Home'
+      breadcrumb: 'Home',
     },
     canActivate: [AuthGuard],
     children: [
       {
-      path: 'horoscope',
-      data: {
-        breadcrumb: 'Horoscope'
-      },
-      component: UpdateDailyComponent,
-      loadChildren: () => HoroscopeRoutingModule
+        path: 'horoscope',
+        data: {
+          breadcrumb: 'Horoscope',
+        },
+        component: UpdateDailyComponent,
+        loadChildren: () => HoroscopeRoutingModule,
       },
       {
         path: 'account',
         data: {
-          breadcrumb: 'Account'
+          breadcrumb: 'Account',
         },
         component: ProfileComponent,
-        loadChildren: () => AccountRoutingModule
+        loadChildren: () => AccountRoutingModule,
       },
       {
         path: 'user-management',
         data: {
-          breadcrumb: 'User Management'
+          breadcrumb: 'User Management',
         },
         component: AllUsersComponent,
-        loadChildren: () => UserManagementRoutingModule
-      }
+        loadChildren: () => UserManagementRoutingModule,
+      },
     ],
-    
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: ''
+    redirectTo: '',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

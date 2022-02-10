@@ -24,12 +24,14 @@ export class AuthService {
   register(model: any) {
     return this.http.post(this.baseUrl + '/api/UserManager/register', model);
   }
+
+  // To check if logged in or not
   isLoggedIn():boolean {
     const token = localStorage.getItem('token') || undefined;
     return !this.jwthelper.isTokenExpired(token);
   }
-  login(model: any): Observable<IUser | undefined> {
-    
+
+  login(model: any): Observable<IUser> {  
     return this.http.post(this.baseUrl + '/api/Authenticate/user-login', model).pipe(
       map((response: any) => {
         const user = response;
@@ -48,6 +50,12 @@ export class AuthService {
       })
     );
   }
+
+  // login(data:any): Observable<IUser>{
+  //   return this.http.post(this.baseUrl + '/api/Authenticate/user-login', data).subscribe(
+
+  //   )
+  // }
 
   logout() {
     localStorage.removeItem('id');

@@ -24,6 +24,7 @@ import { CpanelComponent } from './cpanel/cpanel.component';
 import { DashItemComponent } from './cpanel/dash-item/dash-item.component';
 import { StatItemComponent } from './cpanel/stat-item/stat-item.component';
 import { ChartComponent } from './cpanel/chart/chart.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ChartComponent } from './cpanel/chart/chart.component';
     BreadcrumbsComponent,
     DashItemComponent,
     StatItemComponent,
-    ChartComponent
+    ChartComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

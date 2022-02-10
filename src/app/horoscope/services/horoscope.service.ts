@@ -38,7 +38,6 @@ export class HoroscopeService {
   }
 
 
-
   // To get all horoscope list 
   getAllHorosList(){
     return this.http.get(baseUrl + '/api/ClientHoroscopeDetails/get-client-horoscope_list', this.options);

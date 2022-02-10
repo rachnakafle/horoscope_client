@@ -1,0 +1,91 @@
+<div class="auth-wrapper aut-bg-img-side cotainer-fiuid align-items-stretch">
+  <div class="row align-items-center w-100 align-items-stretch bg-white">
+    <div
+      class="d-none d-lg-flex col-lg-8 aut-bg-img align-items-center d-flex justify-content-center"
+    >
+      <div class="col-md-8">
+        <div class="mb-4">
+          <img
+            src="assets/mypay-logo-white.png"
+            class="img-fluid"
+            width="150"
+          />
+        </div>
+        <h1 class="text-white mb-5">Create an Account</h1>
+        <p class="text-white">
+          A new way to make the payment easy, reliable and secure. You can
+          manage all your transactions from your mobile phone & many more.
+        </p>
+      </div>
+    </div>
+    <div
+      class="col-lg-4 align-items-stret h-100 align-items-center d-flex justify-content-center"
+    >
+      <div class="auth-content">
+        <div class="mb-4">
+          <i class="feather icon-user-plus fa-2x"></i>
+        </div>
+        <h3 class="mb-4">Client Signup</h3>
+        <form>
+          <div class="form-group">
+            <input
+              formControlName="username"
+              type="text"
+              class="form-control"
+              placeholder="Username"
+            />
+            <small class="err_msg" *ngIf="">
+              Please enter valid username.
+            </small>
+          </div>
+          <div class="form-group mobile">
+            <span class="mobile-">+977-</span>
+            <input
+              formControlName="phone"
+              type="number"
+              class="form-control"
+              placeholder="Mobile Number"
+              minlength="5"
+              maxlength="10"
+            />
+            <small class="err_msg" *ngIf="">
+              Please enter valid mobile number (length should be 10).
+            </small>
+          </div>
+          <div class="form-group">
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+            />
+            <small class="err_msg" *ngIf=""> Please enter valid email. </small>
+          </div>
+          <div class="form-group">
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              placeholder="password"
+            />
+            <small class="err_msg" *ngIf="">
+              Please enter valid password.
+            </small>
+          </div>
+
+          <button
+            [disabled]=""
+            type="submit"
+            class="btn btn-primary shadow-2 mb-4 btn-sm"
+          >
+            Sign up
+          </button>
+        </form>
+        <p class="mb-0 text-muted text-center">
+          Allready have an account?
+          <a class="text-c-red" routerLink="'/login'"> Log in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,30 +1,23 @@
-<div class="login-wrap">
-  <div class="login-left w-50">
-    <img src="assets/login-hero.png" />
-  </div>
-  <div class="login-right w-50">
-    <div class="login-page page">
-      <div class="page-header text-center">
-        <div class="welcome-msg">
-          <h5>Welcome to,</h5>
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <!-- Login Background  -->
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <!-- Login Background End-->
+    <div class="card">
+      <div class="card-body">
+        <div class="mb-4 login-logo text-center">
+          <img src="assets/mypay-logo.png" class="img-fluid" width="180" />
         </div>
-        <!--."welcome-msg ends-->
-        <div class="login-brand">
-          <img src="assets/mypay-logo.png" />
+        <h5 class="mb-4">Welcome! Log in to your MyPay account</h5>
+        <div *ngIf="submitted" class="alert alert-danger">
+          {{ submitted_msg }}
         </div>
-        <!--.login-brand ends-->
-        <div class="login-intro">
-          <p>
-            {{appMessages.loginIntro}}
-          </p>
-        </div>
-        <!--.login-intro ends-->
-      </div>
-      <!--.page-header ends-->
-      <div *ngIf="submitted" class="alert alert-danger">
-        {{submitted_msg}}
-      </div>
-      <div class="page-entry">
+        <!-- Main Login Form -->
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
           <div class="form-group">
             <label for="inputUsername">Username</label>
@@ -68,15 +61,15 @@
                   class="form-check-input"
                   id="exampleCheck1"
                 />
-                <label class="form-check-label text-dark" for="exampleCheck1"
+                <label
+                  class="form-check-label text-dark"
+                  for="exampleCheck1"
                   >Remember Me</label
                 >
               </div>
-             
             </div>
-          
           </div>
-         
+
           <button
             [disabled]="loginForm.invalid"
             type="submit"
@@ -85,9 +78,9 @@
             Log In
           </button>
         </form>
+        <p class="mb-2 text-muted text-center">Forgot password? <a [routerLink]="'/register'" class="text-c-red">Reset</a></p>
+        <p class="mb-0 text-muted text-center">Dont have an account? <a [routerLink]="'/register'" class="text-c-red">Signup</a></p>
       </div>
-      <!--.page-entry ends-->
     </div>
-    <!--.Login Page ends-->
   </div>
 </div>
