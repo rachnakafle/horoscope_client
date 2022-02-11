@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
+      Validators.minLength(4),
     ]),
   });
   constructor(private router: Router, private authservice: AuthService) {}
