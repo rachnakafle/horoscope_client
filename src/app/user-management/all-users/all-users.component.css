@@ -1,0 +1,10 @@
+.refresh_users{
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    left: 17px;
+    top: 17px;
+}
+.page-entry-heading h3{
+    padding-left: 50px;
+}

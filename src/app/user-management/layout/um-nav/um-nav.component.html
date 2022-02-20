@@ -1,0 +1,16 @@
+<nav class="horoscope-nav">
+    <ul>
+      <li
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a [routerLink]="'/user-management'">All Users</a>
+      </li>
+      <li
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a [routerLink]="'/user-management/user-roles'">User Roles</a>
+      </li>
+    </ul>
+  </nav>

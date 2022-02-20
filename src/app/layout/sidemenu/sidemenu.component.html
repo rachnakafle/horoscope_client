@@ -1,0 +1,34 @@
+<ul class="smenu">
+    <li *ngFor="let data of datas; index as i;" [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="data['link']">
+            <img src="assets/cpanel-icons/dash.png" class="img-fluid" width="18px">  <span class="dbt"> {{ data['title'] }}</span>  
+        </a>
+
+        <ul *ngIf="!!data['link']">
+            <li *ngFor='let obj of data["submenu"]' [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]=" obj.link ">
+                    <span class="material-icons-outlined">
+                        chevron_right
+                        </span>  <span class="dbst"> {{ obj.title }} </span>
+                </a>
+               
+
+                <ul>
+                    <li *ngFor='let obj of obj.submenu' [routerLinkActive]="['active']"
+                        [routerLinkActiveOptions]="{ exact: true }">
+                        <a [routerLink]=" obj.link ">
+                           <span class="dbst"> {{ obj.title }} </span>
+                        </a>
+                        {{obj['submenu']}}
+        
+        
+                    </li>
+                </ul>
+
+
+            </li>
+        </ul>
+    </li>
+</ul>

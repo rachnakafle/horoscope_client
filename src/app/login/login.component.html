@@ -1,0 +1,86 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <!-- Login Background  -->
+    <div class="auth-bg">
+      <span class="r"></span>
+      <span class="r s"></span>
+      <span class="r s"></span>
+      <span class="r"></span>
+    </div>
+    <!-- Login Background End-->
+    <div class="card">
+      <div class="card-body">
+        <div class="mb-4 login-logo text-center">
+          <img src="assets/mypay-logo.png" class="img-fluid" width="180" />
+        </div>
+        <h5 class="mb-4">Welcome! Log in to your MyPay account</h5>
+        <div *ngIf="submitted" class="alert alert-danger">
+          {{ submitted_msg }}
+        </div>
+        <!-- Main Login Form -->
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input
+              name="username"
+              type="text"
+              class="form-control"
+              id="inputUsername"
+              placeholder="Enter your username"
+              formControlName="username"
+            />
+            <small
+              class="err_msg"
+              *ngIf="username && username.invalid && username.touched"
+            >
+              Please enter valid username.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              placeholder="Min. 8 characters"
+              formControlName="password"
+            />
+            <small
+              class="err_msg"
+              *ngIf="password && password.invalid && password.touched"
+            >
+              Please enter valid password.
+            </small>
+          </div>
+          <div class="row">
+            <div class="remember-forgot-wrap form-group col-md-5">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                />
+                <label
+                  class="form-check-label text-dark"
+                  for="exampleCheck1"
+                  >Remember Me</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <button
+            [disabled]="loginForm.invalid"
+            type="submit"
+            class="btn btn-primary btn-lg btn-block theme-bg rounded-30 mt-2"
+          >
+            Log In
+          </button>
+        </form>
+        <p class="mb-2 text-muted text-center">Forgot password? <a [routerLink]="'/register'" class="text-c-red">Reset</a></p>
+        <p class="mb-0 text-muted text-center">Dont have an account? <a [routerLink]="'/register'" class="text-c-red">Signup</a></p>
+      </div>
+    </div>
+  </div>
+</div>

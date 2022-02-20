@@ -1,0 +1,78 @@
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  } 
+li a {
+    padding: 6px 20px 6px 20px;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+    color: #fff;
+  }
+  
+li a:hover {
+    color: #f8e401;
+  }
+ul li ul{
+    display: none;
+    width: 100%;
+  }
+ul li.active ul{
+  display: block;
+  }
+.smenu > li > a{
+  line-height: 30px;
+}   
+.smenu > .active > a{
+  background: rgb(228 84 22 / 67%);
+}
+.active a{
+  color: #fff;
+}
+ul li.active li span.material-icons-outlined{
+  font-size: 16px;
+  padding-right: 5px;
+}
+ul li.active li a{
+  color: #fff;
+  padding-left: 40px;
+}
+ul li.active li a:hover{
+  color: rgba(255,255,255,0.9);
+}
+ul li.active li.active a{
+
+  color: #f8e401;
+}
+.smenu > li{
+  position: relative;
+}
+ul li li ul{
+  display: none;
+}
+ /* .smenu > li:after{
+  background: url(/assets/arrow-white.png) no-repeat center;
+  background-size: 11px auto;
+  position: absolute;
+  content: "";
+  right: 10px;
+  top: 18px;
+  width: 13px;
+  height: 8px;
+  transform: rotate(-90deg);
+  transition: transform 0.3s;
+} 
+.smenu > li.active:after{
+  transform: rotate(0deg);
+} 
+.smenu > li:first-child::after{
+  display: none;
+}
+.smenu > li img{
+  width: 16px;
+  margin-right: 10px;
+}
+.smenu > li > ul{
+  padding: 14px 0;
+} */

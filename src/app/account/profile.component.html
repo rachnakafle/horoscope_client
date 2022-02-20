@@ -1,0 +1,78 @@
+<div *ngIf="_router.url === '/account'" class="account-dashboard">
+  <div class="row  text-center">
+    <div class="col-md-6">
+      <div class="whiteheader-item">
+        <div class="wh-item-heading">
+          <h3 class="title">General Information</h3>
+        </div>
+        <div class="wh-item-entry">
+
+          <div *ngIf="loader" class="loader">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div class="item-profile-pic text-center">
+            <div *ngIf="!!currentUser.profileImagePath" class="item-profile-pic-image">
+              <img src="{{baseUrl + currentUser.profileImagePath}}">
+            </div>
+            <div *ngIf="!currentUser.profileImagePath" class="item-profile-pic-image">
+              <img src="assets/img_profile.png">
+            </div>
+            <div class="item-profile-pic-info">
+              <h5>{{currentUser.fullName}}</h5>
+              <p>{{currentUser.userName}}</p>
+            </div>
+
+          </div>
+          <div class="item-profile-details">
+            <table class="table table-mid-content">
+              <tbody>
+
+                <tr *ngIf="!!currentUser.email">
+                  <td>Email</td>
+                  <td>{{currentUser.email}}</td>
+                </tr>
+                <tr *ngIf="!!currentUser.address">
+                  <td>Address</td>
+                  <td>{{currentUser.address}}</td>
+                </tr>
+                <tr *ngIf="!!currentUser.phoneNumber">
+                  <td>Phone</td>
+                  <td>{{currentUser.phoneNumber}}</td>
+                </tr>
+                <tr *ngIf="!!currentUser.mobileNumber">
+                  <td>Phone</td>
+                  <td>{{currentUser.mobileNumber}}</td>
+                </tr>
+                <tr *ngIf="!!currentUser.gender">
+                  <td>Gender</td>
+                  <td>{{currentUser.gender}}</td>
+                </tr>
+                <tr *ngIf="!!currentUser.dateOfBirth">
+                  <td>Date of Birth</td>
+                  <td>{{currentUser.dateOfBirth | date}}</td>
+                </tr>
+                <tr *ngIf="!!currentUser.department">
+                  <td>Department</td>
+                  <td>{{currentUser.department}}</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--.page-item END-->
+    </div>
+    <div class="col">
+      <div class="noheader-item">
+
+      </div>
+      <!--.page-item END-->
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

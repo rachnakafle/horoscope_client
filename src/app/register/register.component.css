@@ -1,0 +1,49 @@
+.auth-wrapper {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+.auth-wrapper > div {
+  z-index: 5;
+}
+
+.aut-bg-img {
+  background-image: url(/assets/bg4.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.aut-bg-img-side p {
+  line-height: 2;
+}
+
+.auth-wrapper .auth-content {
+  position: relative;
+  width: 350px;
+  padding: 15px;
+  z-index: 5;
+}
+p.text-muted {
+    font-size: 13px;
+}
+.mobile span{
+    display: inline-block;
+    width: 20%;
+    line-height: 30px;
+}
+.mobile .form-control{
+    width: 80%;
+    display: inline-block;
+}

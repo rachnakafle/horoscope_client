@@ -1,0 +1,18 @@
+export const appMessages = {
+    userCreated: 'User created successfully!',
+    userCreateError:'Sorry! Couldn\'t create user.',
+    roleCreated: 'User role created successfully!',
+    roleCreateError:'Sorry! Couldn\'t create role.',
+    signCreated: 'Sign created successfully!',
+    signCreateError:'Sorry! Couldn\'t create sign.',
+    added: 'Added successfully!',
+    addError: 'Sorry! Couldn\'t add.',
+    deleted: 'Deleted Successfully!',
+    deleteError: 'Sorry! Couldn\'t delete this Item.',
+    updated: 'Updated successfully!',
+    updateError: 'Sorry! Couldn\'t update.',
+    passwordChanged: 'Password changed successfully!',
+    passwordChangeError:'Sorry! Couldn\'t change password.',
+    loginError:'User and/or password incorrect.',
+    loginIntro: 'Login to get into the moment updates on the things that interest you.',
+}
