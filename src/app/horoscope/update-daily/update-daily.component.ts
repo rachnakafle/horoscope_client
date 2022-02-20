@@ -20,7 +20,7 @@ export class UpdateDailyComponent implements OnInit {
   alldaily: any;
   currentUser!: string;
   myLanguage!: string;
-  myHoroscope!: string;
+  myHoroscope!: any;
   languageCode: any;
   allHoros: any; //displays every horoscope in select  
   userName: any;
@@ -62,6 +62,7 @@ export class UpdateDailyComponent implements OnInit {
 
   // For UpdateDaily
   getDaily(freq: string) {
+    let mytestDaily: any;
     this.loader = true;
     let data = {
       username: this.currentUser,
@@ -74,16 +75,20 @@ export class UpdateDailyComponent implements OnInit {
         this.isHoroscopeSelected = x.isHoroscopeSelected;       
         this.alldaily = x.dailyHoroscopes;
         this.selected_date = x.currentDate;
-        this.myHoroscope = x.myHoroscope;
+
+        // if horoscope is selected
+        mytestDaily = x.myHoroscope;
+        this.myHoroscope = false;
+        if(mytestDaily !==null){
+          this.myHoroscope = mytestDaily.myDailyHoroscope;
+        }
+
         this.myLanguage = x.selectedLanguageCode;
         this.horoscopeId = x.selectedHoroscopeId;
         this.currentEnglishDate = x.currentNepaliDateDetails.english_long_date;
         this.currentNepaliDate = x.currentNepaliDateDetails.nepali_long_date;
         this.loader = false;
-        console.log(this.currentNepaliDate);
-        console.log(this.currentEnglishDate);        
-        console.log(this.horoscopeId);
-        console.log(this.myLanguage);
+        
         // To bind with settings's form
         this.editHorosForm.setValue({
           selectedHoroscope: this.horoscopeId,

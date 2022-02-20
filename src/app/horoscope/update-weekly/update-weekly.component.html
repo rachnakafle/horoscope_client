@@ -9,13 +9,54 @@
   <!--.loader ends -->
 
   <h5 *ngIf="myLanguage === 'en'" class="current_date">
-    This Week's Horoscope -  {{currentEnglishDate}}
+    This Week's Horoscope - {{ currentEnglishDate }}
   </h5>
   <h5 *ngIf="myLanguage === 'np'" class="current_date">
-   {{ currentNepaliDate }} सम्म को राशिफल
+    {{ currentNepaliDate }} सम्म को राशिफल
   </h5>
   <!-- API TABLE -->
+  <!-- For Selected Horoscope -->
   <div *ngIf="isHoroscopeSelected" class="row">
+    <div *ngIf="myHoroscope !== null" class="card">
+      <div class="card-block">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-auto">
+            <img
+              src="{{ baseUrl + myHoroscope.horoscopeImagePath }}"
+              style="width: 130px"
+              class="rounded-circle"
+            />
+          </div>
+
+          <div class="col text-left">
+            <h4 class="text-c-red">
+              {{ myHoroscope.horoscopeNameNepali }} -
+              {{ myHoroscope.horoscopeNameEnglish }}
+            </h4>
+            <span *ngIf="myLanguage === 'np'" class="text-muted"
+              >({{ myHoroscope.subTitleNepali }})
+            </span>
+            <span *ngIf="myLanguage === 'en'" class="text-muted"
+              >({{ myHoroscope.subTitleEnglish }})</span
+            >
+          </div>
+        </div>
+        <div
+          *ngIf="myLanguage === 'np'"
+          class="card-text m-t-10 text-left"
+          [innerHTML]="myHoroscope.horoscopeDescriptionNepali"
+        ></div>
+        <div
+          *ngIf="myLanguage === 'en'"
+          class="card-text m-t-10 text-left"
+          [innerHTML]="myHoroscope.horoscopeDescriptionEnglish"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- For All Horoscope -->
+  <div class="row">
     <div *ngFor="let day of allWeekly" class="col-md-3">
       <div class="card p-2">
         <div class="text-center m-b-30 m-t-30">
@@ -45,9 +86,7 @@
           ></div>
         </div>
       </div>
-      <!--.card ends-->
     </div>
-    <!---.col ends-->
   </div>
   <!--.row ends-->
 </main>

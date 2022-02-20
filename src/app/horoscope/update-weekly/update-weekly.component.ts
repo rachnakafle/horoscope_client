@@ -16,7 +16,7 @@ export class UpdateWeeklyComponent implements OnInit {
   allWeekly: any;
   currentUser!:string;
   myLanguage!:string;
-  myHoroscope!:string;
+  myHoroscope!:any;
   isHoroscopeSelected!: boolean;
   currentEnglishDate!: Date;
   currentNepaliDate!:Date;
@@ -34,6 +34,7 @@ export class UpdateWeeklyComponent implements OnInit {
   }
  
   getWeekly(freq:string) {
+    let mytestWeekly: any;
     this.loader = true;
     let data = {
       username: this.currentUser,
@@ -41,11 +42,17 @@ export class UpdateWeeklyComponent implements OnInit {
     }
     this._horoscope.getHoroscope(data).subscribe({
       next:(x:any) => {
-        // console.log(x);
+        console.log(x);
         this.isHoroscopeSelected = x.isHoroscopeSelected;
         this.allWeekly = x.weeklyHoroscopes;
         this.selected_date = x.currentDate;
-        this.myHoroscope = x.myHoroscope;
+
+        // if horoscope is selected
+        mytestWeekly =  x.myHoroscope
+        this.myHoroscope = false;
+        if(mytestWeekly !== null){
+          this.myHoroscope = mytestWeekly.myWeeklyHoroscope;
+        }
         this.myLanguage = x.selectedLanguageCode;
         this.currentEnglishDate = x.currentWeekRange.weekRangeEnglish;
         this.currentNepaliDate = x.currentWeekRange.weekRangeNepali;
