@@ -13,14 +13,17 @@ export class EngMonthlyComponent implements OnInit {
   baseUrl = environment.baseUrl;
   loader: boolean = false;
   selected_date!: Date;
+  currentEnglishDate!: Date;
+  currentNepaliDate!:Date;
   allMonthly: any;
   currentUser!:string;
   myLanguage!:string;
   myHoroscope!:string;
+  isHoroscopeSelected!:boolean;
 
   constructor(
     private _horoscope: HoroscopeService,
-    public _router: Router
+    public _router: Router,
   ) {
     let token = this._horoscope.getToken();
     this.currentUser = this._horoscope.getUserByToken(token);
@@ -39,9 +42,12 @@ export class EngMonthlyComponent implements OnInit {
     this._horoscope.getHoroscope(data).subscribe({
       next:(x:any) => {
         console.log(x);
+        this.isHoroscopeSelected = x.isHoroscopeSelected;
         this.selected_date = x.currentDate;
         this.myHoroscope = x.myHoroscope;
         this.myLanguage = x.selectedLanguageCode;
+        this.currentEnglishDate = x.currentNepaliDateDetails.english_long_date;
+        this.currentNepaliDate = x.currentNepaliDateDetails.nepali_long_date;
         if(this.myLanguage === 'en'){
           this.allMonthly = x.monthlyEnglishHoroscopes;
         }else{

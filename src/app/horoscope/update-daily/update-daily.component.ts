@@ -14,6 +14,9 @@ export class UpdateDailyComponent implements OnInit {
   baseUrl = environment.baseUrl;
   loader: boolean = false;
   selected_date!: Date;
+  isHoroscopeSelected!: boolean;
+  currentEnglishDate!: Date;
+  currentNepaliDate!:Date;
   alldaily: any;
   currentUser!: string;
   myLanguage!: string;
@@ -64,25 +67,32 @@ export class UpdateDailyComponent implements OnInit {
       username: this.currentUser,
       frequency: freq,
     };
-    console.log(data);
+    // console.log(data);
     this._horoscope.getHoroscope(data).subscribe({
       next: (x: any) => {
+        console.log(x);
+        this.isHoroscopeSelected = x.isHoroscopeSelected;       
         this.alldaily = x.dailyHoroscopes;
         this.selected_date = x.currentDate;
         this.myHoroscope = x.myHoroscope;
         this.myLanguage = x.selectedLanguageCode;
         this.horoscopeId = x.selectedHoroscopeId;
+        this.currentEnglishDate = x.currentNepaliDateDetails.english_long_date;
+        this.currentNepaliDate = x.currentNepaliDateDetails.nepali_long_date;
         this.loader = false;
+        console.log(this.currentNepaliDate);
+        console.log(this.currentEnglishDate);        
         console.log(this.horoscopeId);
-
+        console.log(this.myLanguage);
         // To bind with settings's form
         this.editHorosForm.setValue({
           selectedHoroscope: this.horoscopeId,
           languageCode: this.myLanguage,
         });
-        console.log(this.editHorosForm.value);
       },
-      error: (e: any) => {},
+      error: (e: any) => {
+        console.log(e);
+      },
       complete: () => {},
     });
   }

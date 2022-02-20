@@ -51,7 +51,7 @@ ul li.active li.active a{
 ul li li ul{
   display: none;
 }
-.smenu > li:after{
+ /* .smenu > li:after{
   background: url(/assets/arrow-white.png) no-repeat center;
   background-size: 11px auto;
   position: absolute;
@@ -62,7 +62,7 @@ ul li li ul{
   height: 8px;
   transform: rotate(-90deg);
   transition: transform 0.3s;
-}
+} 
 .smenu > li.active:after{
   transform: rotate(0deg);
 } 
@@ -75,4 +75,4 @@ ul li li ul{
 }
 .smenu > li > ul{
   padding: 14px 0;
-}
+} */

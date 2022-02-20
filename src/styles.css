@@ -29,7 +29,7 @@ body {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 8px;
   border-radius: 7px;
-  background: #ff7b42; 
+  background: #ff7b42;
 }
 
 .table.table td {
@@ -49,6 +49,8 @@ h3,
 h4,
 h5 {
   font-weight: 400;
+  color: #111;
+  line-height: 1.2;
 }
 h4 {
   font-size: 20px;
@@ -56,8 +58,11 @@ h4 {
 p {
   margin: 8px 0;
 }
-h3{
+h3 {
   color: #111;
+}
+h5{
+  font-size: 1rem;
 }
 
 .page-heading {
@@ -78,7 +83,7 @@ h3{
 }
 
 .grey_txt {
-  color: #777
+  color: #777;
 }
 .m-b-30 {
   margin-bottom: 30px;
@@ -90,15 +95,20 @@ h3{
   color: #e45416 !important;
 }
 .text-muted {
-  color: #6c757d!important;
+  color: #6c757d !important;
 }
-.current_date{
+.current_date {
   color: #e45416;
   text-align: left;
   font-size: 16px;
   margin: 20px 0;
 }
-input[type=text],input[type=password],input[type=email],select,textarea,input[type=date] {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea,
+input[type="date"] {
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid #d7d7d7 !important;
@@ -125,12 +135,11 @@ General Buttons Starts
 }
 
 .btn.btn-icon-edit {
-  background: #075C33;
-
+  background: #075c33;
 }
 
 .btn.btn-icon-view {
-  background: #C40000;
+  background: #c40000;
 }
 
 .btn.btn-icon span {
@@ -147,26 +156,26 @@ General Buttons Starts
 /*************************************
 .Sidebav Starts
 **************************************/
-.sidenav{
+.sidenav {
   background: #f75c18 url(/assets/navbar-img-4.jpg) bottom center no-repeat;
   background-size: cover;
   display: block;
-    z-index: 1029;
-    position: fixed;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    -webkit-box-shadow: 1px 0 20px 0 #ff7b42;
-    box-shadow: 1px 0 20px 0 #ff7b42;
-    width: 264px;
-    height: 100vh;
-    top: 0;
-    color: #a9b7d0;
+  z-index: 1029;
+  position: fixed;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-box-shadow: 1px 0 20px 0 #ff7b42;
+  box-shadow: 1px 0 20px 0 #ff7b42;
+  width: 264px;
+  height: 100vh;
+  top: 0;
+  color: #a9b7d0;
 }
 /***********************************
 Page Item Starts
 **************************************/
 
-.page-item{
+.page-item {
   box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
   border-radius: 4px;
   margin: 0 0 20px;
@@ -194,16 +203,16 @@ Page Item Starts
 }
 
 .page-entry-heading h3 {
-    margin-bottom: 0;
-    color: #000;
-    font-size: 14px;
-    font-weight: 400;
-    display: inline-block;
-    margin-right: 10px;
-    line-height: 1.1;
-    position: relative;
+  margin-bottom: 0;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 1.1;
+  position: relative;
 }
-.page-entry-heading h3:before{
+.page-entry-heading h3:before {
   content: "";
   background-color: #e45416;
   position: absolute;
@@ -216,7 +225,7 @@ Page Item Starts
 .page-item-entry {
   background: #fff;
   padding: 20px 30px;
-  position:  relative;
+  position: relative;
 }
 
 .page-item-entry a {
@@ -227,14 +236,14 @@ Page Item Starts
   font-size: 14px;
   table-layout: fixed;
 }
-.content-main-entry{
+.content-main-entry {
   padding: 10px 0;
 }
 
 .card {
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-          box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
   border: none;
   margin-bottom: 30px;
   -webkit-transition: all 0.5s ease-in-out;
@@ -306,8 +315,6 @@ Default Form Stylings Starts
   top: 10px;
 }
 
-
-
 /***********************************
 Form Error Messages Starts
 **************************************/
@@ -323,7 +330,6 @@ input.ng-invalid.ng-touched {
   border-bottom: 1px solid red;
 }
 
-
 /***********************************
 .horoscope-nav  starts
 **************************************/
@@ -336,7 +342,6 @@ input.ng-invalid.ng-touched {
   display: flex;
   justify-content: flex-start;
   box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
-
 }
 .horoscope-nav li {
   position: relative;
@@ -358,7 +363,7 @@ input.ng-invalid.ng-touched {
   background: #022335;
   color: #fff;
 }
-.has-dropdown ul{
+.has-dropdown ul {
   display: none;
   position: absolute;
   z-index: 999;
@@ -368,18 +373,18 @@ input.ng-invalid.ng-touched {
   left: 0;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.1);
 }
-.has-dropdown ul li{
+.has-dropdown ul li {
   display: block;
 }
-.has-dropdown ul a{
+.has-dropdown ul a {
   padding: 8px 12px;
   border-bottom: 1px solid #eee;
   display: block;
 }
-.has-dropdown ul a:hover{
+.has-dropdown ul a:hover {
   background: #f3f3f3;
 }
-.has-dropdown ul .active a{
+.has-dropdown ul .active a {
   background: #022335;
 }
 .profile_image {
@@ -454,7 +459,6 @@ Horoscope  starts
   font-weight: normal;
   font-size: 15px;
   padding: 8px;
-
 }
 
 .input-group-append a {
@@ -545,15 +549,11 @@ a {
 }
 
 .modal-footer {
-
   border-top: none;
-
 }
 
 .modal-header {
-
   padding: 0.75rem 1rem;
-
 }
 
 span.material-icons.trash {
@@ -568,83 +568,89 @@ span.dbst {
   position: relative;
   top: -3px;
 }
-.lang_select_wrap{
+.lang_select_wrap {
   position: relative;
 }
-.lang_selector{
+.lang_selector {
   position: absolute;
   left: 0;
   top: 10px;
   z-index: 99;
 }
-.lang_selector ul{
+.lang_selector ul {
   margin: 0;
   padding: 0;
   list-style: none;
   border: 2px solid #022335;
   border-radius: 20px;
 }
-.lang_selector li{
+.lang_selector li {
   display: inline-block;
 }
-.lang_selector li a{
+.lang_selector li a {
   display: inline-block;
   padding: 2px 14px;
   font-size: 14px;
 }
-.lang_selector li.active a{
+.lang_selector li.active a {
   background: #022335;
   color: #fff;
   border-radius: 20px;
   margin: 0 -2px;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 0.5rem;
   font-weight: 400;
   line-height: 1.2;
 }
 
-.btn-group-sm>.btn, .btn-sm {
+.btn-group-sm > .btn,
+.btn-sm {
   padding: 0.25rem 2.5rem;
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.2rem;
 }
 .modal-content {
   border: none;
   box-shadow: 0 1px 20px 0 rgb(69 90 100 / 8%);
-
 }
 
-.modal-body{
+.modal-body {
   position: relative;
 }
-.loading-middle{
-  position:absolute;
-  background: rgba(255,255,255,0.7);
+.loading-middle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 999;
 }
-.loading-middle .spinner-border{
+.loading-middle .spinner-border {
   position: absolute;
   left: 50%;
   top: 50%;
 }
 
-
-
-
 @media only screen and (max-width: 575px) {
   .card .card-header .card-header-right {
-
     float: right;
   }
-  .card .card-header .select-horoscope-right{
-
+  .card .card-header .select-horoscope-right {
     position: static;
     float: left;
   }
@@ -654,10 +660,9 @@ span.dbst {
     white-space: nowrap;
     min-height: 10px;
     padding: 0px 2px 1px;
-    font-size:10px;
-    line-height:10px;
-}
-
+    font-size: 10px;
+    line-height: 10px;
+  }
 }
 .card .card-header .card-header-right .dropdown-menu {
   margin-top: 0;
@@ -670,7 +675,7 @@ span.dbst {
   border: none;
   background: transparent;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   color: #e45416;
 }
 .card .card-header .card-header-right .btn.dropdown-toggle i {
@@ -681,7 +686,7 @@ span.dbst {
 }
 .card .card-header .card-header-right .btn.dropdown-toggle:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   outline: none;
 }
 .card .card-footer {
@@ -707,8 +712,8 @@ span.dbst {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.7);
   z-index: 999;
 }
@@ -717,8 +722,8 @@ span.dbst {
   color: #e34501;
   font-size: 24px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -727,7 +732,6 @@ span.dbst {
   z-index: 99999;
   border-radius: 0;
 }
-.horoscope-content .card:hover{
+.horoscope-content .card:hover {
   box-shadow: 0 10px 20px 0 rgb(0 0 0 / 30%);
-
 }

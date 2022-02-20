@@ -16,6 +16,9 @@ export class EngYearlyComponent implements OnInit {
   currentUser!:string;
   myLanguage!:string;
   myHoroscope!:string;
+  isHoroscopeSelected!:boolean;
+  currentYearEnglish!: Date
+  currentYearNepali!:Date;
 
   constructor(
     private _horoscope: HoroscopeService,
@@ -38,10 +41,13 @@ export class EngYearlyComponent implements OnInit {
     this._horoscope.getHoroscope(data).subscribe({
       next:(x:any) => {
         console.log(x);
+        this.isHoroscopeSelected = x.isHoroscopeSelected;
         this.allYearly = x.yearlyHoroscopes;
         this.selected_date = x.currentDate;
         this.myHoroscope = x.myHoroscope;
         this.myLanguage = x.selectedLanguageCode;
+        this.currentYearEnglish = x.yearlyEnglishHoroscopes[0].horoscopeYearEnglish;
+        this.currentYearNepali = x.yearlyNepaliHoroscopes[0].horoscopeYearNepali;
         this.loader = false;
         if(this.myLanguage === 'en'){
           this.allYearly = x.yearlyEnglishHoroscopes;
@@ -55,9 +61,6 @@ export class EngYearlyComponent implements OnInit {
         this.loader = false;
       },
       complete:() => { },
-    });
-    
+    });    
   }
-
-
 }

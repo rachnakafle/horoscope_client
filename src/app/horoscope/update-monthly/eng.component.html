@@ -9,11 +9,16 @@
         </div>
         <!--.loader ends -->
 
-        <h5 class="current_date">
-          Today's Horoscope - {{ selected_date | date: "fullDate" }}
+        <h5 *ngIf="myLanguage === 'en'" class="current_date">
+          This Month's Horoscope - {{ currentEnglishDate  }}
         </h5>
+
+        <h5 *ngIf="myLanguage === 'np'" class="current_date">
+          यो महिनाको राशिफल  - {{ currentEnglishDate  }}
+        </h5>
+
         <!-- API TABLE -->
-        <div *ngIf="myHoroscope === null" class="row">
+        <div *ngIf="isHoroscopeSelected" class="row">
           <div *ngFor="let day of allMonthly" class="col-md-3">
             <div class="card p-2">
               <div class="text-center m-b-30 m-t-30">

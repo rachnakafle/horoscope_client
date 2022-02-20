@@ -43,5 +43,16 @@
   text-align: right;
   margin-left: 791px;
   margin-top: -63px;
+  padding: 6px 18px;
+  font-size: 13px;
+}
+
+.btn-outline-primary:hover {
+  background-color: #f75c18;
+  color: #fff;
+}
+
+button{
+  margin: 0 5px;
 }
 

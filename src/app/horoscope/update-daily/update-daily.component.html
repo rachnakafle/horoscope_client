@@ -5,10 +5,9 @@
     </div>
 
     <!--.page-entry-heading ends-->
-
     <div class="page-item-entry text-center">
       <div class="nav-headline">
-        <!-- NavBar --> 
+        <!-- NavBar -->
         <nav class="nav-tabs">
           <ul class="nav nav-tabs">
             <li
@@ -26,14 +25,14 @@
 
         <!-- Settings Box -->
         <div class="settings">
-          <!-- Settings Button -->         
-            <button
-              class="btn btn-outline-primary btn-sm"
-              data-toggle="modal"
-              data-target="#settings"
-            >
-              Settings
-            </button>
+          <!-- Settings Button -->
+          <button
+            class="btn btn-outline-primary btn-sm"
+            data-toggle="modal"
+            data-target="#settings"
+          >
+            Settings
+          </button>
           <!-- Settings Modal -->
           <div
             class="modal fade"
@@ -53,6 +52,7 @@
                 <div class="modal-body">
                   <!-- Settings Form -->
                   <form [formGroup]="editHorosForm" (ngSubmit)="onSubmit()">
+                    <!-- Selection of Horoscope from settings -->
                     <div class="form-group row">
                       <label class="col-md-5">Select Horoscope</label>
                       <select
@@ -72,6 +72,7 @@
                       </select>
                     </div>
 
+                    <!-- Selection of language from settings -->
                     <div class="form-group row">
                       <label class="col-md-5">Select language</label>
                       <select
@@ -110,20 +111,25 @@
         *ngIf="_router.url === '/horoscope'"
         class="content-main-entry horoscope-content"
       >
-        <div *ngIf="loader" class="loader">
+        <!-- Loader started -->
+        <!-- <div *ngIf="loader" class="loader">
           <div class="d-flex justify-content-center">
             <div class="spinner-border" role="status">
               <span class="sr-only">Loading...</span>
             </div>
           </div>
-        </div>
+        </div> -->
         <!--.loader ends -->
 
-        <h5 class="current_date">
-          Today's Horoscope - {{ selected_date | date: "fullDate" }}
+        <h5 *ngIf="myLanguage === 'en'" class="current_date">
+          Today's Horoscope - {{ currentEnglishDate }}
+        </h5>
+
+        <h5 *ngIf="myLanguage === 'np'" class="current_date">
+          आजको राशिफल - {{ currentNepaliDate }}
         </h5>
         <!-- API TABLE -->
-        <div *ngIf="myHoroscope === null" class="row">
+        <div *ngIf="isHoroscopeSelected" class="row">
           <div *ngFor="let day of alldaily" class="col-md-3">
             <div class="card p-2">
               <div class="text-center m-b-30 m-t-30">

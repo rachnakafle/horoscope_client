@@ -17,6 +17,9 @@ export class UpdateWeeklyComponent implements OnInit {
   currentUser!:string;
   myLanguage!:string;
   myHoroscope!:string;
+  isHoroscopeSelected!: boolean;
+  currentEnglishDate!: Date;
+  currentNepaliDate!:Date;
 
   constructor(
     private _horoscope: HoroscopeService,
@@ -27,10 +30,10 @@ export class UpdateWeeklyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDaily('Weekly');
+    this.getWeekly('Weekly');
   }
  
-  getDaily(freq:string) {
+  getWeekly(freq:string) {
     this.loader = true;
     let data = {
       username: this.currentUser,
@@ -39,10 +42,15 @@ export class UpdateWeeklyComponent implements OnInit {
     this._horoscope.getHoroscope(data).subscribe({
       next:(x:any) => {
         // console.log(x);
+        this.isHoroscopeSelected = x.isHoroscopeSelected;
         this.allWeekly = x.weeklyHoroscopes;
         this.selected_date = x.currentDate;
         this.myHoroscope = x.myHoroscope;
         this.myLanguage = x.selectedLanguageCode;
+        this.currentEnglishDate = x.currentWeekRange.weekRangeEnglish;
+        this.currentNepaliDate = x.currentWeekRange.weekRangeNepali;
+        console.log(this.myLanguage);
+        
         this.loader = false;
         // console.log(this.allWeekly);
       },

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { HoroscopeRoutingModule } from './horoscope-routing.module';
 
 import { UpdateWeeklyComponent } from './update-weekly/update-weekly.component';
